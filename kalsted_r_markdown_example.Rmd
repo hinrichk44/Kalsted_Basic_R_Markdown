@@ -1,0 +1,53 @@
+The below text is a header
+
+# Basic Analysis of the Cars Dataset
+
+The below text is a sub-header
+
+## By Harry Kalsted
+
+Here is some bolding
+
+**Part One**
+
+Below is a chunk of code to run. The symbol is (`) NOT ('). You must initiate with three (`) and close with three (`)
+
+We are importing the cars dataset into R with data(cars)
+
+We are looking at the structure of the cars dataset with str(cars)
+
+We are looking at a basic summary of the cars dataset with summary(cars)
+
+We are plotting the cars dataset with plot(cars)
+
+```{r}
+data(cars)
+str(cars)
+summary(cars)
+plot(cars)
+```
+
+Here is some more bolding
+
+**Part Two**
+
+Below is a another chunk of code to run
+
+We are looking at a histogram of the speed column in the cars dataset with hist(cars$speed)
+
+We are looking at a boxplot of the distance column in the cars dataset with boxplot(cars$dist)
+
+```{r}
+hist(cars$speed)
+boxplot(cars$dist)
+```
+
+Below is IN-LINE R code
+
+We are typing "the average speed of cars was": and then a calculation done in R via mean(cars$speed)
+
+The average speed of cars was `r mean(cars$speed)`
+
+Below is another header. We are just denoting the end of the project
+
+# The End
