@@ -2,28 +2,43 @@
 title: Harry is Learning R-Markdown
 author: "Harry Kalsted"
 date: "6/9/2022"
-output: html_document
+output: 
+  html_document: 
+    toc: yes
 ---
 
+You can add a Table of Contents by going to Output Options and clicking on Table of Contents.
+
+The TOC will use the headers you created in your document as a way to structure the TOC.
+
+When you Knit the R-markdown document to HTML, the TOC will appear near the top and you can simply click where you want to go
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. 
 
 
-
-
-The below text is a header
+The below text is a header. One pound sign gives you a main header
 
 # Basic Analysis of the Cars Dataset
 
-The below text is a sub-header
+The below text is a sub-header. Two pound signs give you a sub-header
 
 ## By Harry Kalsted
+
+The below text is Heading Three. Three pound signs lead to that. Increase pound signs up to six for more sub-headers
+
+### For Work
 
 Here is some bolding
 
 **Part One**
 
-Below is a chunk of code to run. The symbol is (`) NOT ('). You must initiate with three (`) and close with three (`)
+Below is a chunk of code to run. The symbol is the SLANTY quote mark. You must initiate and close with three of them.
+
+You must also include {r} after the first three slanty quote marks to initiate a code chunk. 
 
 We are importing the cars dataset into R with data(cars)
+
+We are looking at the first few rows of the dataset with head(cars)
 
 We are looking at the structure of the cars dataset with str(cars)
 
@@ -32,9 +47,19 @@ We are looking at a basic summary of the cars dataset with summary(cars)
 We are plotting the cars dataset with plot(cars)
 
 ```{r}
+#Here we are importing the cars dataset that is already in R
 data(cars)
+
+#Here we are looking at the first few rows of the cars dataset
+head(cars)
+
+#Here we are looking at the structure of the cars dataset
 str(cars)
+
+#Here we are looking at a summary of the cars dataset
 summary(cars)
+
+#Here we are looking at a basic plot of the cars dataset
 plot(cars)
 ```
 
@@ -49,7 +74,10 @@ We are looking at a histogram of the speed column in the cars dataset with hist(
 We are looking at a boxplot of the distance column in the cars dataset with boxplot(cars$dist)
 
 ```{r}
+#Here is a histogram plotting the speed of the cars
 hist(cars$speed)
+
+#Here is a boxplot plotting the distance of the cars
 boxplot(cars$dist)
 ```
 
@@ -59,6 +87,38 @@ We are typing "the average speed of cars was": and then a calculation done in R 
 
 The average speed of cars was `r mean(cars$speed)`
 
-Below is another header. We are just denoting the end of the project
 
-# The End
+**Part Three - Extra Stuff to Know**
+
+
+Using one asterisk on each side of a word will italicize it like this *italic*
+
+
+Using three asterisks on each side of a word will bold-italicize it like this ***bold italic***
+
+
+You can list items simply by numbering them like below
+
+1. List Item 1
+
+2. List Item 2
+
+
+You can use a dash or asterisk to create bullet points like below
+
+- Bullet Point 1
+
+- Bullet Point 2
+
+
+You can add links to your R-markdown document like below. Use brackets to name the link. 
+
+Then use parentheses after with the actual hyperlink. Make sure the https is included
+
+[here is a link to a R-markdown tutorial on Youtube](https://www.youtube.com/watch?v=K418swtFnik)
+
+
+
+Below is another header. We are just denoting the end of the project. We are bolding the header.
+
+# **The End**
