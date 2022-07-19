@@ -1,0 +1,203 @@
+---
+output:
+  html_document: 
+    code_folding: hide
+    df_print: paged
+    theme: flatly 
+    highlight: tango
+    toc: yes
+    toc_depth: 2
+    number_sections: yes
+  pdf_document: default
+---
+
+
+---
+title: "Sales Report"
+author: "Harry Kalsted"
+date: "7/19/2022"
+---
+
+
+```{r setup, include=FALSE}
+# The code chunk name is r setup
+# We are setting echo = FALSE because this is a sales report. This is being shared with non-technical people.
+# We added both message = FALSE and warning = FALSE
+# We set out.width and out.height to 100%, which means plots will fill up the entire screen
+# fig.pos = "center" will center the images you create
+# We set dpi = 300 to make the images seem crisper
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE,
+                      out.width = "100%",
+                      out.height = "100%",
+                      fig.pos = "center",
+                      dpi = 300)
+```
+
+
+```{r libraries}
+# The code chunk name is r libraries
+library(tidyverse)
+library(lubridate)
+library(tidyquant)
+library(plotly)
+
+```
+
+
+```{r scripts}
+# The code chunk name is r scripts
+# We are importing the plot_total_sales and plot_categories functions we created in a separate project
+source("../00_scripts/plot_sales.R")
+
+```
+
+
+```{r import data}
+# The code chunk name is r import data
+# Here we are importing the bike_orderlines dataset in rds form
+# We have a 15,644 x 13 tibble
+bike_orderlines_tbl <- read_rds("../00_data/bike_sales/data_wrangled/bike_orderlines.rds")
+```
+
+
+# Total Sales Charts {.tabset .tabset-fade .tabset-pills}
+
+
+## Quarterly Sales Trends
+
+
+```{r quarterly sales}
+# The code chunk name is r quarterly sales
+# We are plotting the quarterly sales of our data
+plot_total_sales(unit = "quarterly")
+```
+
+
+## Monthly Sales Trends
+
+
+```{r monthly sales, out.height="500px"}
+# The code chunk name is r monthly sales
+# We adjusted the pixels to 500 to make it look better in the tabbed format
+# We are plotting the monthly sales of our data
+plot_total_sales(unit = "monthly")
+```
+
+
+## Weekly Sales Trends
+
+
+```{r weekly sales}
+# The code chunk name is r weekly sales
+# We are plotting the weekly sales of our data
+# The date format will come out as 2014-06-01, etc. 
+plot_total_sales(unit = "weekly", date_format = "%Y-%m-%d")
+```
+
+
+# Category Sales Charts {.tabset .tabset-fade}
+
+
+## Road {.tabset .tabset-fade .tabset-pills}
+
+
+### Quarterly
+
+
+```{r road quarterly, out.height="1000px"}
+# The code chunk name is r road quarterly
+# We are plotting quarterly sales for the bike category "road"
+# We adjusted the out.height to 1000px so the 4 charts would look good stacked on top of each other
+plot_categories(category_1 = "Road", unit = "quarterly", ncol = 1)
+```
+
+
+### Monthly
+
+
+```{r road monthly, out.height="1000px"}
+# The code chunk name is r road monthly
+# We are plotting monthly sales for the bike category "road"
+# We adjusted the out.height to 1000px so the 4 charts would look good stacked on top of each other
+plot_categories(category_1 = "Road", unit = "monthly", ncol = 1)
+```
+
+
+### Weekly
+
+
+```{r road weekly, out.height="1000px"}
+# The code chunk name is r road weekly
+# We are plotting weekly sales for the bike category "road"
+# We adjusted the out.height to 1000px so the 4 charts would look good stacked on top of each other
+# The date format will be 2013-07-05, etc
+plot_categories(category_1 = "Road", unit = "weekly", date_format = "%Y-%m-%d", ncol = 1)
+```
+
+
+## Mountain {.tabset .tabset-fade .tabset-pills}
+
+
+### Quarterly
+
+
+```{r mountain quarterly, out.height="1000px"}
+# The code chunk name is r mountain quarterly
+# We are plotting quarterly sales for the bike category "mountain"
+# We adjusted the out.height to 1000px so the 4 charts would look good stacked on top of each other
+plot_categories(category_1 = "Mountain", unit = "quarterly", ncol = 1)
+```
+
+
+### Monthly
+
+
+```{r mountain monthly, out.height="1000px"}
+# The code chunk name is r mountain monthly
+# We are plotting monthly sales for the bike category "mountain"
+# We adjusted the out.height to 1000px so the 4 charts would look good stacked on top of each other
+plot_categories(category_1 = "Mountain", unit = "monthly", ncol = 1)
+```
+
+
+### Weekly
+
+
+```{r mountain weekly, out.height="1000px"}
+# The code chunk name is r mountain weekly
+# We are plotting weekly sales for the bike category "mountain"
+# We adjusted the out.height to 1000px so the 4 charts would look good stacked on top of each other
+plot_categories(category_1 = "Mountain", unit = "weekly", date_format = "%Y-%m-%d", ncol = 1)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The first thing we did was click on a new RMarkdown document, gave it a title, and gave it an author
+
+Then we added: code_folding, df_print, theme, highlight, toc, toc_depth, and number_sections to the YAML
+
+When using toc, make sure to start with H1 headers, which are used to generate the toc
+
+ctrl + alt + i will create a code chunk
+
+We added {.tabset .tabset-fade .tabset-pills} to the H1 headers. 
